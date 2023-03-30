@@ -1,8 +1,8 @@
 node('JDK8') {
-   stage('source code') {
+   stage('Source code') {
     git branch: 'main', url: 'https://github.com/udaykumar70/Simple-Login-java.git' 
  }
-  stage('build the code execute shell') {
+  stage('Build the code execute shell') {
     sh 'mvn package'
  }
 }
