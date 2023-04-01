@@ -10,7 +10,7 @@ pipeline {
  stages {
   stage('source code') {
     steps {
-        git url: 'https://github.com/udaykumar70/Simple-Login-java.git' , branch: main1
+        git url: 'https://github.com/udaykumar70/Simple-Login-java.git' , branch: 'main1'
     }
   }
   stage('build') {
