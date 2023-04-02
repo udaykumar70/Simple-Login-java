@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'JDK11 && JDK12' }
   tools {
-     maven 'apache-maven-3.9.1
+     maven 'apache-maven-3.6.3'
     }
   options {
     timeout(time: 1, unit: 'HOURS')
