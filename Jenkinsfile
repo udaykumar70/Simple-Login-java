@@ -1,5 +1,6 @@
 pipeline {
-    agent { label 'JDK11' }
+    agent { label 'JDK11' } 
+    agent { label 'JDK12' }
   options {
     timeout(time: 1, unit: 'HOURS')
   }
