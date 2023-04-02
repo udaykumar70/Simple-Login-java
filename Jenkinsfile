@@ -1,30 +1,40 @@
 pipeline {
-   agent { label 'JDK11' }
-   options { 
+  agent { label 'JDK11 && JDK12' }
+  tools {
+     maven 'apache-maven-3.9.1
+    }
+  options {
     timeout(time: 1, unit: 'HOURS')
-   }
-   triggers {
+  }
+  triggers {
     cron('* */4 * * *')
-   }
-
- stages {
-  stage('source code') {
-    steps {
-        git url: 'https://github.com/udaykumar70/Simple-Login-java.git' , branch: 'main1'
+  }
+  stages {
+    stage('source code') {
+        steps {     
+      git url: 'https://github.com/udaykumar70/Simple-Login-java.git' , branch: 'main1'
+       }
+    }
+    stage('example') {
+        steps {
+            sh 'mvn --version'
+        }
+    }
+    stage('build') {
+        steps {
+        sh: 'mvn package'
+    }
     }
   }
-  stage('build') {
-   steps {
-    sh 'mvn package'
-   }
-  }
- }
-post {
+ post {
+    always {
+        echo "hi done"
+    }
     success {
-        echo 'passed'
+        echo "fineshed"
     }
     unsuccessful {
-        echo ' failed'
+        echo " failed"
     }
-}
+ }
 }
