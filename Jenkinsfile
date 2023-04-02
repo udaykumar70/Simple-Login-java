@@ -7,16 +7,17 @@ pipeline {
     cron('* */4 * * *')
   }
   stages {
-    stage('source code') {
-      agent {
+   agent {
         node {
          label 'JDK11'
         }
        }
-        steps {     
+    stage('source code') {
+       steps {     
       git url: 'https://github.com/udaykumar70/Simple-Login-java.git' , branch: 'main1'
        }
-   
+   }
+   stage('build') {
         steps {
         sh 'mvn package'
     }
