@@ -1,7 +1,6 @@
 pipeline {
-    agent { label 'JDK11' } 
-    agent { label 'JDK12' }
-  options {
+    agent none
+    options {
     timeout(time: 1, unit: 'HOURS')
   }
   triggers {
@@ -9,15 +8,19 @@ pipeline {
   }
   stages {
     stage('source code') {
+      agent {
+        node {
+         label 'JDK11'
+        }
+       }
         steps {     
       git url: 'https://github.com/udaykumar70/Simple-Login-java.git' , branch: 'main1'
        }
-    }
-    stage('build') {
+   
         steps {
         sh 'mvn package'
     }
-    }
+   } 
   }
  post {
     always {
